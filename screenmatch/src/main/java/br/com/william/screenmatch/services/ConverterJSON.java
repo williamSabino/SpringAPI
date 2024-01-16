@@ -3,6 +3,7 @@ package br.com.william.screenmatch.services;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.databind.util.JSONWrappedObject;
 
 public class ConverterJSON implements IConverteDados{
     ObjectMapper mapper = new ObjectMapper();
