@@ -1,6 +1,5 @@
 package br.com.william.screenmatch.services;
 
-import br.com.william.screenmatch.models.Series;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
