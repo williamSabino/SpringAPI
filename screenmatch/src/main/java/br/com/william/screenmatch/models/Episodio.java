@@ -1,11 +1,18 @@
 package br.com.william.screenmatch.models;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+@Entity
+@Table(name = "episodios")
 public class Episodio {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Transient
     DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private String titulo;
     private int numerotemporada;
@@ -13,6 +20,10 @@ public class Episodio {
     private double avaliacao;
     private LocalDate dataLancamento;
 
+    @ManyToOne
+    private Serie serie;
+
+    public Episodio(){};
     public Episodio(Integer temporada, DadosEpisodio dadosEpisodio) {
         this.numerotemporada = temporada;
         this.titulo = dadosEpisodio.titulo();
@@ -28,6 +39,22 @@ public class Episodio {
         } catch (DateTimeParseException e){
             this.dataLancamento = null;
         }
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Serie getSerie() {
+        return serie;
+    }
+
+    public void setSerie(Serie serie) {
+        this.serie = serie;
     }
 
     public String getTitulo() {
